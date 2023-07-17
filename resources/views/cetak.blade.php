@@ -25,7 +25,7 @@
 </head>
 
 <body>
- <table class="screen" style="width:8cm;">
+ <table class="screen" style="width:5.8cm;">
   <tbody>
    <tr>
     <td class="jarak">

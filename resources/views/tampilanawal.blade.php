@@ -25,49 +25,50 @@
  <section class="content">
   <div class="container-fluid">
    <!-- Small boxes (Stat box) -->
+   <h3 style="text-align:center;">Selamat Datang</h3>
+   <h3 style="text-align:center;">di</h3>
+   <h2 style="text-align:center;padding-bottom: 20px;">Klinik Pratama Rawat Jalan Al Azhar</h2>
    <div class="row">
     <div class="col-md-4">
      <!-- small box -->
      <a class="small-box bg-info btn">
       <div class="inner">
-       <h3>150</h3>
+       <h3 style="margin-bottom:0;">Poli Umum</h3>
 
-       <p>New Orders</p>
+       <!-- <p>New Orders</p> -->
       </div>
       <div class="icon">
-       <i class="fas fa-user-md"></i>
+       <i class="fas fa-user-md" style="position: inherit;padding-bottom: 20px;"></i>
       </div>
      </a>
     </div>
     <!-- ./col -->
     <div class="col-md-4">
      <!-- small box -->
-     <div class="small-box bg-success">
+     <a class="small-box bg-success btn">
       <div class="inner">
-       <h3>53<sup style="font-size: 20px">%</sup></h3>
+       <h3 style="margin-bottom:0;">Poli Gigi</h3>
 
-       <p>Bounce Rate</p>
+       <!-- <p>New Orders</p> -->
       </div>
       <div class="icon">
-       <i class="ion ion-stats-bars"></i>
+       <i class="fas fa-user-md" style="position: inherit;padding-bottom: 20px;"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-     </div>
+     </a>
     </div>
     <!-- ./col -->
     <div class="col-md-4">
      <!-- small box -->
-     <div class="small-box bg-warning">
+     <a class="small-box bg-warning btn">
       <div class="inner">
-       <h3>44</h3>
+       <h3 style="margin-bottom:0;">Poli KIA</h3>
 
-       <p>User Registrations</p>
+       <!-- <p>New Orders</p> -->
       </div>
       <div class="icon">
-       <i class="ion ion-person-add"></i>
+       <i class="fas fa-user-md" style="position: inherit;padding-bottom: 20px;"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-     </div>
+     </a>
     </div>
     <!-- ./col -->
     
