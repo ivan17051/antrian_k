@@ -1,19 +1,28 @@
 @extends('layouts.layout')
 
+@section('awalStatus')
+active
+@endsection
+
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+ <form action="{{route('antrian.store')}}" method="post" id="formantrian">
+  @csrf
+  <input type="hidden" name="idpoli" id="inputidpoli">
+ </form>
  <!-- Content Header (Page header) -->
  <div class="content-header">
   <div class="container-fluid">
    <div class="row mb-2">
     <div class="col-sm-6">
-     <h1 class="m-0">Dashboard</h1>
+     <h1 class="m-0">Tampilan Awal</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
      <ol class="breadcrumb float-sm-right">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active">Dashboard v1</li>
+      <li class="breadcrumb-item active">Tampilan Awal</li>
      </ol>
     </div><!-- /.col -->
    </div><!-- /.row -->
@@ -31,7 +40,7 @@
    <div class="row">
     <div class="col-md-4">
      <!-- small box -->
-     <a class="small-box bg-info btn">
+     <a class="small-box bg-info btn" onclick="submit(1)">
       <div class="inner">
        <h3 style="margin-bottom:0;">Poli Umum</h3>
 
@@ -45,7 +54,7 @@
     <!-- ./col -->
     <div class="col-md-4">
      <!-- small box -->
-     <a class="small-box bg-success btn">
+     <a class="small-box bg-success btn" onclick="submit(2)">
       <div class="inner">
        <h3 style="margin-bottom:0;">Poli Gigi</h3>
 
@@ -59,7 +68,7 @@
     <!-- ./col -->
     <div class="col-md-4">
      <!-- small box -->
-     <a class="small-box bg-warning btn">
+     <a class="small-box bg-warning btn" onclick="submit(3)">
       <div class="inner">
        <h3 style="margin-bottom:0;">Poli KIA</h3>
 
@@ -80,4 +89,14 @@
  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@endsection
+
+@section('script')
+<script>
+ function submit(idpoli){
+  console.log(idpoli);
+  $('#inputidpoli').val(idpoli);
+  $('#formantrian').submit();
+ }
+</script>
 @endsection

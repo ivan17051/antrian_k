@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AmbilAntrian extends Model
+class Antrian extends Model
 {
     use HasFactory;
 
@@ -17,5 +17,6 @@ class AmbilAntrian extends Model
         "idpoli",
         "namapoli",
         "tanggal",
+        "nomor"
     ];
 }

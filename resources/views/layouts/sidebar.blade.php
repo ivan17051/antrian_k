@@ -28,48 +28,56 @@
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
    <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-   <li class="nav-item">
-    <a href="#" class="nav-link">
+   <!-- <li class="nav-item">
+    <a href="{{route('antrian.index')}}" class="nav-link @yield('antrianStatus')">
      <i class="nav-icon fas fa-tachometer-alt"></i>
      <p>
-      Dashboard
+      Admin Antrian
      </p>
     </a>
-   </li>
+   </li> -->
    <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{route('antrian.index')}}" class="nav-link @yield('awalStatus')">
      <i class="nav-icon fas fa-desktop"></i>
      <p>
       Tampilan Awal
      </p>
     </a>
    </li>
-   <li class="nav-header">MULTI LEVEL EXAMPLE</li>
    <li class="nav-item">
-    <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-circle"></i>
+    <a href="{{route('data.laporan')}}" class="nav-link @yield('laporanStatus')">
+     <i class="nav-icon fas fa-file-invoice"></i>
      <p>
-      Level 1
+      Laporan
+     </p>
+    </a>
+   </li>
+   <!-- <li class="nav-header">ADMIN</li> -->
+   <li class="nav-item @yield('adminShow')">
+    <a href="#" class="nav-link">
+     <i class="nav-icon fas fa-tachometer-alt"></i>
+     <p>
+      Admin
       <i class="right fas fa-angle-left"></i>
      </p>
     </a>
     <ul class="nav nav-treeview">
      <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{route('antrian.show',['antrian'=>1])}}" class="nav-link @yield('umumStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Level 2</p>
+       <p>Poli Umum</p>
       </a>
      </li>
      <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{route('antrian.show',['antrian'=>2])}}" class="nav-link @yield('gigiStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Level 2</p>
+       <p>Poli Gigi</p>
       </a>
      </li>
      <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{route('antrian.show',['antrian'=>3])}}" class="nav-link @yield('kiaStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Level 2</p>
+       <p>Poli KIA</p>
       </a>
      </li>
     </ul>

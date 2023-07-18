@@ -69,15 +69,15 @@
   @yield('content')
 
   <footer class="main-footer">
-   <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+   <strong>Copyright &copy; {{date('Y')}} <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
    All rights reserved.
    <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 3.2.0
+    <b>Version</b> 1.0.0
    </div>
   </footer>
  </div>
  <!-- ./wrapper -->
-
+ @yield('script')
  <!-- jQuery -->
  <script src="{{asset('public/plugins/jquery/jquery.min.js')}}"></script>
  <!-- jQuery UI 1.11.4 -->
@@ -109,7 +109,7 @@
  <!-- AdminLTE App -->
  <script src="{{asset('public/dist/js/adminlte.js')}}"></script>
  <!-- AdminLTE for demo purposes -->
- <script src="{{asset('public/dist/js/demo.js')}}"></script>
+ <!-- <script src="{{asset('public/dist/js/demo.js')}}"></script> -->
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
 </body>

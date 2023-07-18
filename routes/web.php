@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AntrianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('tampilanawal');
-});
+Route::get('/', 'App\Http\Controllers\AntrianController@index')->name('antrian.index');
+Route::apiResource('antrian', App\Http\Controllers\AntrianController::class)->except('index');
+
+Route::get('/laporan', 'App\Http\Controllers\AntrianController@laporan')->name('data.laporan');
 
 Route::get('/cetak', function () {
     return view('cetak');
