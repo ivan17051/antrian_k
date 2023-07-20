@@ -57,7 +57,7 @@
         <td class="fontCenter" style="border-top:1px solid black"></td>
        </tr>
        <tr>
-        <td class="fontCenter" style="font-size:25px">Poli Umum</td>
+        <td class="fontCenter" style="font-size:25px">Poli {{$antrian->namapoli}}</td>
        </tr>
        <tr>
         <td>&nbsp;</td>
@@ -69,7 +69,7 @@
         <td class="">&nbsp;</td>
        </tr>
        <tr>
-        <td class="fontCenter" style="font-size:60px">001</td>
+        <td class="fontCenter" style="font-size:60px">{{sprintf("%03d", $antrian->noantrian)}}</td>
        </tr>
        <tr>
         <td class="">&nbsp;</td>

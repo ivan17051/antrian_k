@@ -8,10 +8,6 @@ active
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
- <form action="{{route('antrian.store')}}" method="post" id="formantrian">
-  @csrf
-  <input type="hidden" name="idpoli" id="inputidpoli">
- </form>
  <!-- Content Header (Page header) -->
  <div class="content-header">
   <div class="container-fluid">
@@ -37,6 +33,18 @@ active
    <h3 style="text-align:center;">Selamat Datang</h3>
    <h3 style="text-align:center;">di</h3>
    <h2 style="text-align:center;padding-bottom: 20px;">Klinik Pratama Rawat Jalan Al Azhar</h2>
+   <div class="row pb-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+     <form action="{{route('antrian.store')}}" method="post" id="formantrian">
+      @csrf
+      <input type="date" class="form-control" name="tanggal" style="font-size: 20px;" value="{{date('Y-m-d')}}">
+      <input type="hidden" name="idpoli" id="inputidpoli">
+     </form>
+    </div>
+    <div class="col-md-3"></div>
+   </div>
+
    <div class="row">
     <div class="col-md-4">
      <!-- small box -->
@@ -80,23 +88,32 @@ active
      </a>
     </div>
     <!-- ./col -->
-    
+
    </div>
    <!-- /.row -->
-   
+
   </div><!-- /.container-fluid -->
  </section>
  <!-- /.content -->
+ @if(isset($cetak))
+ <a id="cetak" href="{{route('antrian.cetak',['id'=>$cetak])}}" onclick="window.open(this, '_blank');return false;"
+  class="btn btn-info" hidden>Cetak</a>
+ @endif
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
 
 @section('script')
 <script>
- function submit(idpoli){
-  console.log(idpoli);
+ function submit(idpoli) {
   $('#inputidpoli').val(idpoli);
   $('#formantrian').submit();
  }
+
+ 
+ @if (isset($cetak))
+  document.getElementById('cetak').click();
+ @endif
 </script>
 @endsection

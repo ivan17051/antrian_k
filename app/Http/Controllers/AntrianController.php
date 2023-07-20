@@ -18,17 +18,25 @@ class AntrianController extends Controller
     {
         $data['now'] = Antrian::where('iscalled', 1)->select('idpoli', 'namapoli', DB::raw('MAX(noantrian) as nonow'))->groupBy('idpoli', 'namapoli')->get();
         $data['last'] = Antrian::select('idpoli', 'namapoli', DB::raw('MAX(noantrian) as nolast'))->groupBy('idpoli', 'namapoli')->get();
-        
-        // dd($data);
+
         return view('admin.adminawal', $data);
     }
 
-    public function show($idpoli){
+    public function show($idpoli, Request $request)
+    {
+
         $data['poli'] = Poli::findOrFail($idpoli);
-        $data['antrian'] = Antrian::where('idpoli', $idpoli)->get();
-        $data['now'] = $data['antrian']->where('iscalled',1)->max('noantrian');
-        $data['last'] = $data['antrian']->max('noantrian');
-        
+        if (is_null($request->tanggal)) {
+            $data['tanggal'] = date('Y-m-d');
+        } else {
+            $data['tanggal'] = $request->tanggal;
+        }
+
+        $data['antrian'] = Antrian::where('idpoli', $idpoli)->where('tanggal',$data['tanggal'])->get();
+        $data['now'] = $data['antrian']->where('iscalled', 1)->where('tanggal',$data['tanggal'])->max('noantrian');
+        $data['last'] = $data['antrian']->where('tanggal',$data['tanggal'])->max('noantrian');
+
+        // dd($data, $request->tanggal, $request->tanggal);
         return view('admin.adminantrian', $data);
     }
 
@@ -36,14 +44,12 @@ class AntrianController extends Controller
     {
         try {
             $antrian_baru = new Antrian($request->all());
-            $max = Antrian::where('idpoli',$request->idpoli)->max('noantrian');
+            $max = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)->max('noantrian');
             $poli = Poli::findOrFail($request->idpoli);
-            
-            $antrian_baru->noantrian = $max+1;
+
+            $antrian_baru->noantrian = $max + 1;
             $antrian_baru->namapoli = $poli->namapoli;
-            $antrian_baru->tanggal = date("Y-m-d");
-            
-            // dd($antrian_baru);
+
             $antrian_baru->save();
         } catch (Exception $exception) {
             $this->flashError($exception->getMessage());
@@ -51,21 +57,31 @@ class AntrianController extends Controller
         }
 
         // $this->flashSuccess('Berhasil Ambil Antrian');
-        return back();
+        return view('tampilanawal',['cetak'=>$antrian_baru->id]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $status)
     {
         try {
-            $antrian = Antrian::findOrFail($id);
-            $antrian->fill($request->all());
+            if ($status == '1') {
+                $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
+                    ->where('iscalled', 0)->orderBy('noantrian')->first();
+                $antrian->iscalled = $status;
+
+            } elseif ($status == '0') {
+                $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
+                    ->where('iscalled', 1)->orderBy('noantrian', 'desc')->first();
+                $antrian->iscalled = $status;
+
+            }
+
             $antrian->save();
         } catch (Exception $exception) {
             $this->flashError($exception->getMessage());
             return back();
         }
 
-        $this->flashSuccess('Data Berhasil Diubah');
+        // $this->flashSuccess('Data Berhasil Diubah');
         return back();
     }
 
@@ -81,5 +97,10 @@ class AntrianController extends Controller
 
         $this->flashSuccess('Data Berhasil Dihapus');
         return back();
+    }
+
+    public function cetak($id){
+        $antrian = Antrian::findOrFail($id);
+        return view('cetak', ['antrian'=>$antrian]);
     }
 }
