@@ -5,7 +5,8 @@
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>AdminLTE 3 | Dashboard</title>
+ <link rel="icon" type="image/png" href="{{asset('public/dist/img/logo_32.png')}}">
+ <title>Klinik Al Azhar Surabaya</title>
 
  <!-- Google Font: Source Sans Pro -->
  <link rel="stylesheet"

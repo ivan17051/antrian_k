@@ -54,7 +54,7 @@ active
       <div class="row">
         <div class="col-md-3">
           <!-- small box -->
-          <div class="small-box bg-info text-center" style="padding: 20px 0;">
+          <div class="small-box @if($poli->id==1)bg-info @elseif($poli->id==2)bg-success @elseif($poli->id==3)bg-warning @endif text-center" style="padding: 20px 0;">
             <div class="inner">
               <h3>Poli {{$poli->namapoli}}</h3>
             </div>

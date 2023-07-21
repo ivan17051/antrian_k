@@ -13,7 +13,7 @@ active
   <div class="container-fluid">
    <div class="row mb-2">
     <div class="col-sm-6">
-     <h1 class="m-0">Tampilan Awal</h1>
+     <!-- <h1 class="m-0">Tampilan Awal</h1> -->
     </div><!-- /.col -->
     <div class="col-sm-6">
      <ol class="breadcrumb float-sm-right">
@@ -32,7 +32,8 @@ active
    <!-- Small boxes (Stat box) -->
    <h3 style="text-align:center;">Selamat Datang</h3>
    <h3 style="text-align:center;">di</h3>
-   <h2 style="text-align:center;padding-bottom: 20px;">Klinik Pratama Rawat Jalan Al Azhar</h2>
+   <h2 style="text-align:center;">Klinik Pratama Rawat Jalan Al Azhar</h2>
+   <h5 style="text-align:center;padding-bottom: 20px;">Jl. Dupak Bandarrejo No. 23 Surabaya</h5>
    <div class="row pb-4">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -91,7 +92,7 @@ active
 
    </div>
    <!-- /.row -->
-
+   <h5 style="text-align:center;">*Silahkan tekan pada Poli tujuan Anda</h5>
   </div><!-- /.container-fluid -->
  </section>
  <!-- /.content -->

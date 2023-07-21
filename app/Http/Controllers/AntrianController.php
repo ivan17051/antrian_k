@@ -32,9 +32,9 @@ class AntrianController extends Controller
             $data['tanggal'] = $request->tanggal;
         }
 
-        $data['antrian'] = Antrian::where('idpoli', $idpoli)->where('tanggal',$data['tanggal'])->get();
-        $data['now'] = $data['antrian']->where('iscalled', 1)->where('tanggal',$data['tanggal'])->max('noantrian');
-        $data['last'] = $data['antrian']->where('tanggal',$data['tanggal'])->max('noantrian');
+        $data['antrian'] = Antrian::where('idpoli', $idpoli)->where('tanggal', $data['tanggal'])->get();
+        $data['now'] = $data['antrian']->where('iscalled', 1)->where('tanggal', $data['tanggal'])->max('noantrian');
+        $data['last'] = $data['antrian']->where('tanggal', $data['tanggal'])->max('noantrian');
 
         // dd($data, $request->tanggal, $request->tanggal);
         return view('admin.adminantrian', $data);
@@ -57,7 +57,7 @@ class AntrianController extends Controller
         }
 
         // $this->flashSuccess('Berhasil Ambil Antrian');
-        return view('tampilanawal',['cetak'=>$antrian_baru->id]);
+        return view('tampilanawal', ['cetak' => $antrian_baru->id]);
     }
 
     public function update(Request $request, $status)
@@ -99,8 +99,31 @@ class AntrianController extends Controller
         return back();
     }
 
-    public function cetak($id){
+    public function cetak($id)
+    {
         $antrian = Antrian::findOrFail($id);
-        return view('cetak', ['antrian'=>$antrian]);
+        return view('cetak', ['antrian' => $antrian]);
+    }
+
+    public function laporan(Request $request)
+    {
+        $data['tglawal'] = $request->tglawal;
+        $data['tglakhir'] = $request->tglakhir;
+        if (isset($data['tglawal']) && isset($data['tglakhir'])) {
+            // $data['antrian'] = Antrian::whereBetween('tanggal', [$data['tglawal'], $data['tglakhir']])->select('tanggal','idpoli','namapoli',DB::raw('max(noantrian)'))
+            //     ->groupBy('tanggal','idpoli','namapoli')->orderBy('tanggal')->get();
+            $query = 'SELECT tanggal, 
+                        COUNT(IF(idpoli=1,1,null)) AS umum, 
+                        COUNT(IF(idpoli=2,1,NULL)) AS gigi,
+                        COUNT(IF(idpoli=3,1,NULL)) AS kia
+                        FROM antrian
+                        WHERE iscalled = 1 AND (tanggal BETWEEN \'' . $data['tglawal'] . '\' AND \'' . $data['tglakhir'] . '\')
+                        GROUP BY tanggal';
+            $data['antrian'] = DB::select(DB::raw($query));
+        } else
+            $data['antrian'] = [];
+        // dd($data);
+
+        return view('laporan.laporan', $data);
     }
 }
