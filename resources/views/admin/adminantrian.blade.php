@@ -33,7 +33,7 @@ active
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Klinik Pratama Rawat Jalan Al Azhar</h1>
-          <p>Jl. Dupak Bandarrejo N0. 23 Surabaya</p>
+          <p>Jl. Dupak Bandarejo N0. 23 Surabaya</p>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">

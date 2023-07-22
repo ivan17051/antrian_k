@@ -33,7 +33,7 @@ active
    <h3 style="text-align:center;">Selamat Datang</h3>
    <h3 style="text-align:center;">di</h3>
    <h2 style="text-align:center;">Klinik Pratama Rawat Jalan Al Azhar</h2>
-   <h5 style="text-align:center;padding-bottom: 20px;">Jl. Dupak Bandarrejo No. 23 Surabaya</h5>
+   <h5 style="text-align:center;padding-bottom: 20px;">Jl. Dupak Bandarejo No. 23 Surabaya</h5>
    <div class="row pb-4">
     <div class="col-md-3"></div>
     <div class="col-md-6">

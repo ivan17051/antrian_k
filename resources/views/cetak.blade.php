@@ -80,6 +80,12 @@
        <tr>
         <td>&nbsp;</td>
        </tr>
+       <tr>
+        <td>&nbsp;</td>
+       </tr>
+       <tr>
+        <td>&nbsp;</td>
+       </tr>
       </tbody>
      </table>
      <!-- END OF KOP SURAT -->
