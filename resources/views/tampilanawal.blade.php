@@ -47,11 +47,11 @@ active
    </div>
 
    <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
      <!-- small box -->
      <a class="small-box bg-info btn" onclick="submit(1)">
       <div class="inner">
-       <h3 style="margin-bottom:0;">Poli Umum</h3>
+       <h4 style="margin-bottom:0;">Pemeriksaan Umum</h4>
 
        <!-- <p>New Orders</p> -->
       </div>
@@ -61,11 +61,11 @@ active
      </a>
     </div>
     <!-- ./col -->
-    <div class="col-md-4">
+    <div class="col-md-3">
      <!-- small box -->
      <a class="small-box bg-success btn" onclick="submit(2)">
       <div class="inner">
-       <h3 style="margin-bottom:0;">Poli Gigi</h3>
+       <h4 style="margin-bottom:0;">Kesehatan Gigi & Mulut</h4>
 
        <!-- <p>New Orders</p> -->
       </div>
@@ -75,11 +75,11 @@ active
      </a>
     </div>
     <!-- ./col -->
-    <div class="col-md-4">
+    <div class="col-md-3">
      <!-- small box -->
      <a class="small-box bg-warning btn" onclick="submit(3)">
       <div class="inner">
-       <h3 style="margin-bottom:0;">Poli KIA</h3>
+       <h4 style="margin-bottom:0;">Pemeriksaan KIA</h4>
 
        <!-- <p>New Orders</p> -->
       </div>
@@ -89,7 +89,20 @@ active
      </a>
     </div>
     <!-- ./col -->
+    <div class="col-md-3">
+     <!-- small box -->
+     <a class="small-box bg-danger btn" onclick="submit(4)">
+      <div class="inner">
+       <h4 style="margin-bottom:0;">Pemeriksaan KB</h4>
 
+       <!-- <p>New Orders</p> -->
+      </div>
+      <div class="icon">
+       <i class="fas fa-user-md" style="position: inherit;padding-bottom: 20px;"></i>
+      </div>
+     </a>
+    </div>
+    <!-- ./col -->
    </div>
    <!-- /.row -->
    <h5 style="text-align:center;">*Silahkan tekan pada Poli tujuan Anda</h5>

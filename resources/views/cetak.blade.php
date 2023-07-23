@@ -57,7 +57,7 @@
         <td class="fontCenter" style="border-top:1px solid black"></td>
        </tr>
        <tr>
-        <td class="fontCenter" style="font-size:25px">Poli {{$antrian->namapoli}}</td>
+        <td class="fontCenter" style="font-size:25px">{{$antrian->namapoli}}</td>
        </tr>
        <tr>
         <td>&nbsp;</td>

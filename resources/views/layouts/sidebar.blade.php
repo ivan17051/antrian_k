@@ -65,19 +65,25 @@
      <li class="nav-item">
       <a href="{{route('antrian.show',['antrian'=>1])}}" class="nav-link @yield('umumStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Poli Umum</p>
+       <p>Pemeriksaan Umum</p>
       </a>
      </li>
      <li class="nav-item">
       <a href="{{route('antrian.show',['antrian'=>2])}}" class="nav-link @yield('gigiStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Poli Gigi</p>
+       <p>Kesehatan Gigi & Mulut</p>
       </a>
      </li>
      <li class="nav-item">
       <a href="{{route('antrian.show',['antrian'=>3])}}" class="nav-link @yield('kiaStatus')">
        <i class="far fa-circle nav-icon"></i>
-       <p>Poli KIA</p>
+       <p>Pemeriksaan KIA</p>
+      </a>
+     </li>
+     <li class="nav-item">
+      <a href="{{route('antrian.show',['antrian'=>4])}}" class="nav-link @yield('kbStatus')">
+       <i class="far fa-circle nav-icon"></i>
+       <p>Pemeriksaan KB</p>
       </a>
      </li>
     </ul>

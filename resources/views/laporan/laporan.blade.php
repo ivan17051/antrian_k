@@ -62,9 +62,10 @@ active
         <thead>
          <tr>
           <th>Tanggal</th>
-          <th>Poli Umum</th>
-          <th>Poli Gigi</th>
-          <th>Poli KIA</th>
+          <th>Pemeriksaan Umum</th>
+          <th>Kesehatan Gigi & Mulut</th>
+          <th>Pemeriksaan KIA</th>
+          <th>Pemeriksaan KB</th>
          </tr>
         </thead>
         <tbody>
@@ -74,6 +75,7 @@ active
           <td>{{$unit->umum}}</td>
           <td>{{$unit->gigi}}</td>
           <td>{{$unit->kia}}</td>
+          <td>{{$unit->kb}}</td>
          </tr>
          @endforeach
         </tbody>

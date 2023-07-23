@@ -115,7 +115,8 @@ class AntrianController extends Controller
             $query = 'SELECT tanggal, 
                         COUNT(IF(idpoli=1,1,null)) AS umum, 
                         COUNT(IF(idpoli=2,1,NULL)) AS gigi,
-                        COUNT(IF(idpoli=3,1,NULL)) AS kia
+                        COUNT(IF(idpoli=3,1,NULL)) AS kia,
+                        COUNT(IF(idpoli=4,1,NULL)) AS kb
                         FROM antrian
                         WHERE iscalled = 1 AND (tanggal BETWEEN \'' . $data['tglawal'] . '\' AND \'' . $data['tglakhir'] . '\')
                         GROUP BY tanggal';

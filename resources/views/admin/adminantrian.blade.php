@@ -4,16 +4,20 @@
 menu-open
 @endsection
 
-@if($poli->namapoli=='Umum')
+@if($poli->namapoli=='Pemeriksaan Umum')
 @section('umumStatus')
 active
 @endsection
-@elseif($poli->namapoli=='Gigi')
+@elseif($poli->namapoli=='Kesehatan Gigi & Mulut')
 @section('gigiStatus')
 active
 @endsection
-@elseif($poli->namapoli=='KIA')
+@elseif($poli->namapoli=='Pemeriksaan KIA')
 @section('kiaStatus')
+active
+@endsection
+@elseif($poli->namapoli=='Pemeriksaan KB')
+@section('kbStatus')
 active
 @endsection
 @endif
@@ -39,7 +43,7 @@ active
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('antrian.index')}}">Home</a></li>
             <li class="breadcrumb-item active">Admin</li>
-            <li class="breadcrumb-item active">Poli {{$poli->namapoli}}</li>
+            <li class="breadcrumb-item active">{{$poli->namapoli}}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -54,9 +58,9 @@ active
       <div class="row">
         <div class="col-md-3">
           <!-- small box -->
-          <div class="small-box @if($poli->id==1)bg-info @elseif($poli->id==2)bg-success @elseif($poli->id==3)bg-warning @endif text-center" style="padding: 20px 0;">
+          <div class="small-box @if($poli->id==1)bg-info @elseif($poli->id==2)bg-success @elseif($poli->id==3)bg-warning @elseif($poli->id==4)bg-danger @endif text-center" style="padding: 20px 0;">
             <div class="inner">
-              <h3>Poli {{$poli->namapoli}}</h3>
+              <h4>{{$poli->namapoli}}</h4>
             </div>
             <div class="icon">
               <i class="fas fa-user-md" style="position: inherit;padding-bottom: 20px;"></i>
