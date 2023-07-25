@@ -16,7 +16,13 @@ class Antrian extends Model
     protected $fillable = [
         "idpoli",
         "namapoli",
+        "nik",
+        "namapasien",
+        "tipepasien",
+        "nobpjs",
+        "alamat",
         "tanggal",
-        "nomor"
+        "noantrian",
+        "iscalled"
     ];
 }

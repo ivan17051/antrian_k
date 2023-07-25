@@ -72,8 +72,15 @@
         <td class="fontCenter" style="font-size:60px">{{sprintf("%03d", $antrian->noantrian)}}</td>
        </tr>
        <tr>
-        <td class="">&nbsp;</td>
+        <td class="fontCenter" style="font-size:15px">{{$antrian->nik}}</td>
        </tr>
+       <tr>
+        <td class="fontCenter" style="font-size:15px">{{$antrian->namapasien}}</td>
+       </tr>
+       <tr>
+        <td class="fontCenter" style="font-size:15px">Tipe : {{strtoupper($antrian->tipepasien)}}</td>
+       </tr>
+       <tr><td></td></tr>
        <tr>
         <td class="fontCenter" style="font-size:13px">Mohon Menunggu Sampai Petugas Memanggil Nomor Antrian Anda</td>
        </tr>

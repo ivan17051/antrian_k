@@ -5,7 +5,83 @@ active
 @endsection
 
 @section('content')
+<div class="modal fade" id="formInput">
+ <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+   <div class="modal-header bg-primary">
+    <h4 class="modal-title">Pendaftaran</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+    </button>
+   </div>
+   <form action="{{route('antrian.store')}}" method="post" id="formantrian">
+    @csrf
+    <div class="modal-body">
 
+     <input type="hidden" name="idpoli" id="inputidpoli">
+     <div class="row">
+      <div class="col-md-5">
+       <div class="form-group">
+        <label for="tanggal">Tanggal Layanan</label>
+        <input type="date" class="form-control" name="tanggal" style="font-size: 20px;" value="{{date('Y-m-d')}}">
+       </div>
+
+       <div class="form-group">
+        <label for="tipepasien">Tipe Pasien</label>
+        <div class="row">
+         <div class="col">
+          <div class="custom-control custom-radio">
+           <input class="custom-control-input" type="radio" id="tipepasien1" name="tipepasien" value="umum"
+            onchange="cektipepasien('umum')" checked>
+           <label for="tipepasien1" class="custom-control-label">Umum</label>
+          </div>
+         </div>
+         <div class="col">
+          <div class="custom-control custom-radio">
+           <input class="custom-control-input" type="radio" id="tipepasien2" name="tipepasien" value="bpjs"
+            onchange="cektipepasien('bpjs')">
+           <label for="tipepasien2" class="custom-control-label">BPJS</label>
+          </div>
+         </div>
+        </div>
+
+       </div>
+       <div class="form-group" id="formbpjs" hidden>
+        <label for="nama">No. BPJS</label>
+        <input type="text" class="form-control" name="nobpjs" id="nobpjs" placeholder="Masukkan No. Kartu BPJS">
+       </div>
+      </div>
+      <div class="col-md-7">
+       <div class="form-group">
+        <label for="nik">NIK</label>
+        <input type="text" class="form-control" name="nik" id="nik" placeholder="Masukkan NIK" maxlength="16" required>
+       </div>
+       <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" class="form-control" name="namapasien" id="namapasien" placeholder="Masukkan Nama" maxlength="50"
+         required>
+       </div>
+       <div class="form-group">
+        <label for="nama">Alamat</label>
+        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat" maxlength="100">
+       </div>
+      </div>
+     </div>
+
+
+    </div>
+
+    <div class="modal-footer justify-content-between">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     <button type="submit" class="btn btn-primary">Simpan</button>
+    </div>
+   </form>
+  </div>
+  <!-- /.modal-content -->
+ </div>
+ <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
  <!-- Content Header (Page header) -->
@@ -37,11 +113,6 @@ active
    <div class="row pb-4">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-     <form action="{{route('antrian.store')}}" method="post" id="formantrian">
-      @csrf
-      <input type="date" class="form-control" name="tanggal" style="font-size: 20px;" value="{{date('Y-m-d')}}">
-      <input type="hidden" name="idpoli" id="inputidpoli">
-     </form>
     </div>
     <div class="col-md-3"></div>
    </div>
@@ -49,6 +120,7 @@ active
    <div class="row">
     <div class="col-md-3">
      <!-- small box -->
+
      <a class="small-box bg-info btn" onclick="submit(1)">
       <div class="inner">
        <h4 style="margin-bottom:0;">Pemeriksaan Umum</h4>
@@ -121,11 +193,25 @@ active
 @section('script')
 <script>
  function submit(idpoli) {
+  $('#formInput').modal('show');
   $('#inputidpoli').val(idpoli);
-  $('#formantrian').submit();
+
+  // $('#formantrian').submit();
  }
 
- 
+ function cektipepasien(e) {
+
+  if (e == 'umum') {
+   $('#formbpjs').attr('hidden', true);
+   $('#nobpjs').attr('required', false);
+   
+  } else if (e == 'bpjs') {
+   $('#formbpjs').attr('hidden', false);
+   $('#nobpjs').attr('required', true);
+  }
+ }
+
+
  @if (isset($cetak))
   document.getElementById('cetak').click();
  @endif
