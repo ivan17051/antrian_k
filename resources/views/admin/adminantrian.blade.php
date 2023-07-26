@@ -77,18 +77,6 @@ active
           <div class="card">
             <div class="card-body text-center row">
 
-              @if(isset($now))
-              <button class="btn btn-warning btn-block p-1" onclick="ubah('0')">
-                Sebelumnya <i class="fas fa-minus"></i>
-              </button>
-              @endif
-
-              @if(isset($last) && $now!=$last)
-              <button class="btn btn-success btn-block p-1" onclick="ubah('1')">
-                Selanjutnya <i class="fas fa-plus"></i>
-              </button>
-              @endif
-
               <button class="btn btn-info btn-block p-1" onclick="location.reload();">
                 Refresh <i class="fas fa-sync-alt"></i>
               </button>
@@ -176,9 +164,17 @@ active
                           </td>
                           <td class="text-right">
                             @if($unit->status==0)
-                            <button class="btn btn-danger btn-sm" onclick="ubah(2,{{$unit->id}})">Batal</button>
+                            <button class="btn btn-success btn-sm" onclick="ubah(1,{{$unit->id}})"><i
+                                class="fas fa-check"></i></button>
+                            <button class="btn btn-danger btn-sm" onclick="ubah(2,{{$unit->id}})"><i
+                                class="fas fa-times"></i></button>
+                            @elseif($unit->status==1)
+                            <button class="btn btn-warning btn-sm" onclick="ubah(0,{{$unit->id}})"><i
+                                class="fas fa-redo-alt"></i></button>
+                            <button class="btn btn-danger btn-sm" onclick="ubah(2,{{$unit->id}})"><i
+                                class="fas fa-times"></i></button>
                             @else
-                            <button class="btn btn-danger btn-sm" disabled>Batal</button>
+                            <button class="btn btn-secondary btn-sm" disabled><i class="fas fa-lock"></i></button>
                             @endif
                           </td>
                         </tr>
@@ -213,20 +209,20 @@ active
 @endsection
 @section('script')
 <script>
-  function ubah(val,id=null) {
-    console.log(val,id);
+  function ubah(val, id = null) {
+    console.log(val, id);
     if (val == '1') {
-      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'1'])}}");
+      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'1'])}}?id=" + id);
     } else if (val == '0') {
-      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'0'])}}");
+      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'0'])}}?id=" + id);
     } else if (val == '2') {
-      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'2'])}}?id="+id);
+      $('#formupdate').attr('action', "{{route('antrian.update',['antrian'=>'2'])}}?id=" + id);
     }
     $('#formupdate').submit();
   }
 
   function gantitanggal(e) {
-    console.log(e.value);
+    // console.log(e.value);
     window.location.href = "{{route('antrian.show',['antrian'=>$poli->id, 'tanggal'=>''])}}" + e.value;
   }
 </script>

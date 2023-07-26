@@ -50,7 +50,7 @@
 
     <div class="modal-footer justify-content-between">
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-     <a class="btn btn-warning" href="{{ route('logout') }}"
+     <a class="btn btn-primary" href="{{ route('logout') }}"
       onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf

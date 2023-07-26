@@ -63,27 +63,27 @@ class AntrianController extends Controller
     {
         // dd($request->all(), $status);
         try {
-            if ($status == '1') {
-                $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
-                    ->where('status', 0)->orderBy('noantrian')->first();
-                if (isset($antrian)){
-                    $antrian->status = $status;
-                    $antrian->save();
-                }   
+            // if ($status == '1') {
+            //     $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
+            //         ->where('status', 0)->orderBy('noantrian')->first();
+            //     if (isset($antrian)){
+            //         $antrian->status = $status;
+            //         $antrian->save();
+            //     }   
 
-            } elseif ($status == '0') {
-                $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
-                    ->where('status', 1)->orderBy('noantrian', 'desc')->first();
-                if (isset($antrian)){
-                    $antrian->status = $status;
-                    $antrian->save();
-                }
+            // } elseif ($status == '0') {
+            //     $antrian = Antrian::where('idpoli', $request->idpoli)->where('tanggal', $request->tanggal)
+            //         ->where('status', 1)->orderBy('noantrian', 'desc')->first();
+            //     if (isset($antrian)){
+            //         $antrian->status = $status;
+            //         $antrian->save();
+            //     }
 
-            } elseif ($status == '2') {
+            // } elseif ($status == '2') {
                 $antrian = Antrian::where('id', $request->id)->first();
                 $antrian->status = $status;
                 $antrian->save();
-            }
+            // }
 
         } catch (Exception $exception) {
             // $this->flashError($exception->getMessage());
@@ -119,6 +119,10 @@ class AntrianController extends Controller
     {
         $data['tglawal'] = $request->tglawal;
         $data['tglakhir'] = $request->tglakhir;
+        $data['tipe'] = $request->tipepasien;
+        if($data['tipe']=='semua') $where = '';
+        else $where = "AND tipepasien = '".$data['tipe']."'";
+        
         if (isset($data['tglawal']) && isset($data['tglakhir'])) {
             // $data['antrian'] = Antrian::whereBetween('tanggal', [$data['tglawal'], $data['tglakhir']])->select('tanggal','idpoli','namapoli',DB::raw('max(noantrian)'))
             //     ->groupBy('tanggal','idpoli','namapoli')->orderBy('tanggal')->get();
@@ -128,8 +132,9 @@ class AntrianController extends Controller
                         COUNT(IF(idpoli=3,1,NULL)) AS kia,
                         COUNT(IF(idpoli=4,1,NULL)) AS kb
                         FROM antrian
-                        WHERE status = 1 AND (tanggal BETWEEN \'' . $data['tglawal'] . '\' AND \'' . $data['tglakhir'] . '\')
-                        GROUP BY tanggal';
+                        WHERE status = 1 AND (tanggal BETWEEN \'' . $data['tglawal'] . '\' AND \'' . $data['tglakhir'] . '\') '
+                        .$where.' GROUP BY tanggal';
+                        
             $data['antrian'] = DB::select(DB::raw($query));
         } else
             $data['antrian'] = [];
