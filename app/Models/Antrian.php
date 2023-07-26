@@ -23,6 +23,6 @@ class Antrian extends Model
         "alamat",
         "tanggal",
         "noantrian",
-        "iscalled"
+        "status"
     ];
 }

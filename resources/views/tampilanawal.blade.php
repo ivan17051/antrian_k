@@ -67,8 +67,6 @@ active
        </div>
       </div>
      </div>
-
-
     </div>
 
     <div class="modal-footer justify-content-between">
@@ -83,7 +81,7 @@ active
 </div>
 <!-- /.modal -->
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="@if(!Auth::user())margin-left: 0; @endif">
  <!-- Content Header (Page header) -->
  <div class="content-header">
   <div class="container-fluid">

@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\AntrianController@index')->name('antrian.index');
 
-Route::apiResource('antrian', App\Http\Controllers\AntrianController::class)->except('index');
-
 Route::get('/cetak/{id}', 'App\Http\Controllers\AntrianController@cetak')->name('antrian.cetak');
 
-Route::get('/laporan', 'App\Http\Controllers\AntrianController@laporan')->name('data.laporan');
+Route::apiResource('antrian', App\Http\Controllers\AntrianController::class)->except('index');
+
+Auth::routes();
+Route::middleware(['auth'])->group(function () {
+ 
+ Route::get('/laporan', 'App\Http\Controllers\AntrianController@laporan')->name('data.laporan');
+});
