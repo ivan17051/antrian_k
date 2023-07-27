@@ -80,6 +80,11 @@
        <tr>
         <td class="fontCenter" style="font-size:15px">Tipe : {{strtoupper($antrian->tipepasien)}}</td>
        </tr>
+       @if($antrian->tipepasien=='bpjs')
+       <tr>
+        <td class="fontCenter" style="font-size:15px">No BPJS : {{$antrian->nobpjs}}</td>
+       </tr>
+       @endif
        <tr><td></td></tr>
        <tr>
         <td class="fontCenter" style="font-size:13px">Mohon Menunggu Sampai Petugas Memanggil Nomor Antrian Anda</td>

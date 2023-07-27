@@ -138,8 +138,29 @@ class AntrianController extends Controller
             $data['antrian'] = DB::select(DB::raw($query));
         } else
             $data['antrian'] = [];
-        // dd($data);
 
         return view('laporan.laporan', $data);
+    }
+
+    public function downloadLaporan(Request $request)
+    {
+        $data['tglawal'] = $request->tglawal;
+        $data['tglakhir'] = $request->tglakhir;
+        $data['tipe'] = $request->tipepasien;
+        if($data['tipe']=='semua') $where = '';
+        else $where = "AND tipepasien = '".$data['tipe']."'";
+    
+        $query = 'SELECT tanggal, 
+                    COUNT(IF(idpoli=1,1,null)) AS umum, 
+                    COUNT(IF(idpoli=2,1,NULL)) AS gigi,
+                    COUNT(IF(idpoli=3,1,NULL)) AS kia,
+                    COUNT(IF(idpoli=4,1,NULL)) AS kb
+                    FROM antrian
+                    WHERE status = 1 AND (tanggal BETWEEN \'' . $data['tglawal'] . '\' AND \'' . $data['tglakhir'] . '\') '
+                    .$where.' GROUP BY tanggal';
+                    
+        $data['antrian'] = DB::select(DB::raw($query));
+        
+        return view('laporan.laporanPdf', $data);
     }
 }

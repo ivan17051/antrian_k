@@ -24,4 +24,5 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
  
  Route::get('/laporan', 'App\Http\Controllers\AntrianController@laporan')->name('data.laporan');
+ Route::get('/laporan/download', 'App\Http\Controllers\AntrianController@downloadLaporan')->name('data.download');
 });

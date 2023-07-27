@@ -73,8 +73,13 @@ active
                   <h3 class="card-title text-center">Laporan</h3>
                 </div>
                 <div class="col-md-6 text-right">
-                  @if(count($antrian)>0)
-                  <button class="btn btn-info btn-sm">Download</button>
+                  @if(isset($antrian))
+                  <form action="{{route('data.download')}}" id="formdownload">
+                    <input type="hidden" name="tipepasien" value="{{isset($tipe) ? $tipe : ''}}">
+                    <input type="hidden" name="tglawal" value="{{isset($tglawal) ? $tglawal : date('Y-m-d')}}">
+                    <input type="hidden" name="tglakhir" value="{{isset($tglakhir) ? $tglakhir : date('Y-m-d')}}">
+                    <button type="submit" class="btn btn-info btn-sm" target="_blank">Download</button>
+                  </form>
                   @endif
                 </div>
               </div>
